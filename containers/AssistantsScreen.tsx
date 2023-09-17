@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, Image } from "react-native";
 
 // Import component
-import ServiceCard from "../../HUST-Smart-Ass-Frontend/src/components/atoms/ServiceCard";
+// import ServiceCard from '../components/atoms/ServiceCard'
 
 export default function AssistantsScreen() {
     return (

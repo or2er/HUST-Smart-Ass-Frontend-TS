@@ -1,7 +1,7 @@
 import { StyleSheet, Pressable, Text, View } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons'
 
-export default function ChatCard({ title = "Lorem Ipsum", description = "lorem ipsum", onPress }) {
+export default function ChatCard({ title = "Lorem Ipsum", description = "lorem ipsum", onPress = () => {} }) {
     return (
         <Pressable style={style.container} onPress={onPress} >
             <Icon name="baseball" size={32} />
