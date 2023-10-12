@@ -4,7 +4,7 @@ import {
     ScrollView,
     Image,
     useColorScheme,
-    ImageBackground
+    ImageBackground,
 } from 'react-native';
 import IonIcon from '@expo/vector-icons/Ionicons';
 import { View } from '@/components/Themed';
@@ -24,14 +24,14 @@ export default function HomeScreen() {
     const colorScheme = useColorScheme();
     const [data, setData] = useState();
     
-    useEffect(() => {
-        fetch('http://192.168.1.3:5001/') // truyền link url của api vào
-        .then(res => {  // res chính là response trả về
-            alert(res.json())
-            console.log(res.json)
-            return res.json() // parse response trả về thành json
-        })
-    },[])
+    // useEffect(() => {
+    //     fetch('http://192.168.1.3:5001/') // truyền link url của api vào
+    //     .then(res => {  // res chính là response trả về
+    //         alert(res.json())
+    //         console.log(res.json)
+    //         return res.json() // parse response trả về thành json
+    //     })
+    // },[])
 
     const clickTest = () =>{
         alert("Hello")
@@ -150,7 +150,8 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        padding: 24
+        paddingHorizontal: 24,
+        paddingTop: 48
     },
     content: {
         flexDirection: 'row',

@@ -1,9 +1,4 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import {
-    DarkTheme,
-    DefaultTheme,
-    ThemeProvider,
-} from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { SplashScreen, Stack } from 'expo-router';
 import { useEffect } from 'react';
@@ -166,6 +161,18 @@ function RootLayoutNav() {
                             presentation: 'modal',
                             headerShown: false,
                             headerTitle: 'Modal',
+                        }}
+                    />
+                    <Stack.Screen
+                        name="af_tasklist"
+                        options={{
+                            headerTitle: 'Processing Tasks'
+                        }}
+                    />
+                    <Stack.Screen
+                        name="chat"
+                        options={{
+                            headerTitle: 'Processing Tasks'
                         }}
                     />
                 </Stack>

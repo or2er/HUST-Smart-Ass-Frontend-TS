@@ -95,12 +95,13 @@ export default function TabLayout() {
                         name="ai_assistants"
                         options={{
                             title: 'AI Assistants',
+                            headerShown: false,
                         }}
                     />
                     <Tabs.Screen
                         name="messages"
                         options={{
-                            title: 'Messages',
+                            title: 'Conservations',
                         }}
                     />
                     <Tabs.Screen

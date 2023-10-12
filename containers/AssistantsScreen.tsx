@@ -1,4 +1,11 @@
-import { StyleSheet, Text, View, Image } from "react-native";
+import { 
+    StyleSheet, 
+    Text, 
+    View, 
+    Image 
+} 
+from "react-native";
+
 
 // Import component
 // import ServiceCard from '../components/atoms/ServiceCard'
