@@ -51,6 +51,7 @@ export default function MessagesScreen() {
                             description="Do problem 1, 2 and 3"
                         />
                         <ChatCard
+                            onPress={() => navigation.navigate('login')}
                             title="How to solve Cal1 Hust and get ..."
                             description="Do problem 1, 2 and 3"
                         />
