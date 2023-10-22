@@ -113,7 +113,7 @@ const style = StyleSheet.create({
         // fontWeight:'bold'
     },
     container: {
-        paddingHorizontal: 24,
+        paddingHorizontal: 10,
         paddingTop: 16
     },
     header: {

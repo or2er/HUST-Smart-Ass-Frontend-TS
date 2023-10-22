@@ -33,7 +33,8 @@ const style = StyleSheet.create({
 
     },
     container: {
-        width: '100%',
+        marginLeft: 2,
+        width: 327,
         backgroundColor: 'white',
         flexDirection: 'row',
         alignItems: 'center',
