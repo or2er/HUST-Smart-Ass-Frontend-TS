@@ -11,6 +11,9 @@ import {
     ImageBackground,
 } from 'react-native';
 import NotesCard from '@/components/NotesCard';
+import { useState } from 'react';
+import TagChip from '@/components/TagChip';
+import SuperNoteCard from '@/components/SuperNoteCard';
 
 const options = [
     { label: "Task", value: "1" },
@@ -19,6 +22,10 @@ const options = [
 
 
 export default function NotesScreen() {
+    const [activeTab, setActiveTab] = useState('1');
+    const switchTab = (value) => {
+        setActiveTab(value);
+    };
     return (
         <View style={{
             flex: 1,
@@ -45,6 +52,7 @@ export default function NotesScreen() {
                         marginTop: 10,
                     }}
                     buttonMargin={2}
+                    onPress={switchTab}
                 />
                 <FAB
                     icon="plus"
@@ -53,30 +61,57 @@ export default function NotesScreen() {
                 />
             </View>
             <ScrollView style={{ paddingBottom: 12 }}>
-                <View style={styles.container2}>
-                    <Text style={{
-                        fontFamily: 'DMSans',
-                        fontWeight: 'bold',
-                        fontSize: 24,
-                    }}>
-                        Today
-                    </Text>
-                    <NotesCard tagName='P' colorTag='#F37373'></NotesCard>
-                    <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
-                    <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
-                </View>
-                <View style={styles.container3}>
-                    <Text style={{
-                        fontFamily: 'DMSans',
-                        fontWeight: 'bold',
-                        fontSize: 24,
-                    }}>
-                        Older
-                    </Text>
-                    <NotesCard tagName='A' colorTag='#FAEBA0'></NotesCard>
-                    <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
-                    <NotesCard tagName='A' colorTag='#A1C0F7'></NotesCard>
-                </View>
+                {activeTab === '1' && (
+                    <>
+                        <View style={styles.container2}>
+                            <Text style={{
+                                fontFamily: 'DMSans',
+                                fontWeight: 'bold',
+                                fontSize: 24,
+                            }}>
+                                Today
+                            </Text>
+                            <NotesCard tagName='P' colorTag='#F37373'></NotesCard>
+                            <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
+                            <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
+                        </View>
+
+                        <View style={styles.container3}>
+                            <Text style={{
+                                fontFamily: 'DMSans',
+                                fontWeight: 'bold',
+                                fontSize: 24,
+                            }}>
+                                Older
+                            </Text>
+                            <NotesCard tagName='A' colorTag='#FAEBA0'></NotesCard>
+                            <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
+                            <NotesCard tagName='A' colorTag='#A1C0F7'></NotesCard>
+                        </View>
+                    </>
+                )}
+                {activeTab === '2' && (
+                    <>
+                        <View style={{
+                            marginTop: 25,
+
+                            flex: 1,
+                            flexDirection: 'row',
+                            justifyContent: 'space-evenly'
+                        }}>
+                            <TagChip textName='Project'></TagChip>
+                            <TagChip textName='Resource'></TagChip>
+                            <TagChip textName='Archive'></TagChip>
+                            <TagChip textName='Areas'></TagChip>
+                        </View>
+                        <ScrollView style={{ paddingBottom: 12 }}>
+                            <SuperNoteCard></SuperNoteCard>
+                            <SuperNoteCard></SuperNoteCard>
+                            <SuperNoteCard></SuperNoteCard>
+                            <SuperNoteCard></SuperNoteCard>
+                        </ScrollView>
+                    </>
+                )}
             </ScrollView>
         </View>
 
