@@ -23,7 +23,7 @@ export default function HomeScreen() {
     const theme = useTheme();
     const colorScheme = useColorScheme();
     const [data, setData] = useState();
-    
+
     // useEffect(() => {
     //     fetch('http://192.168.1.3:5001/') // truyền link url của api vào
     //     .then(res => {  // res chính là response trả về
@@ -33,14 +33,14 @@ export default function HomeScreen() {
     //     })
     // },[])
 
-    const clickTest = () =>{
+    const clickTest = () => {
         alert("Hello")
         fetch('http://192.168.1.3:5001/') // truyền link url của api vào
-        .then(res => {  // res chính là response trả về
-            alert(res.json())
-            console.log(res.json)
-            // return res.json() // parse response trả về thành json
-        })
+            .then(res => {  // res chính là response trả về
+                alert(res.json())
+                console.log(res.json)
+                // return res.json() // parse response trả về thành json
+            })
     }
 
 
@@ -49,7 +49,7 @@ export default function HomeScreen() {
             <View style={styles.container}>
                 <ScrollView
                     showsVerticalScrollIndicator={false}
-                    showsHorizontalScrollIndicator={false} 
+                    showsHorizontalScrollIndicator={false}
                 >
                     <Text variant='headlineSmall' style={{
                         fontFamily: 'DMSans',
@@ -79,13 +79,14 @@ export default function HomeScreen() {
                     </View>
 
                     <View style={{
-                        paddingBottom: 32
+                        paddingBottom: 32,
                     }} >
                         <ScrollView
                             showsVerticalScrollIndicator={false}
                             showsHorizontalScrollIndicator={false}
                             horizontal
                             style={{
+                                height: 220
 
                             }}
                         >
@@ -136,9 +137,9 @@ export default function HomeScreen() {
                     </View>
 
                     <View>
-                        <RecentNoteCard/>
-                        <RecentNoteCard/>
-                        <RecentNoteCard/>
+                        <RecentNoteCard />
+                        <RecentNoteCard />
+                        <RecentNoteCard />
                     </View>
 
                 </ScrollView>
