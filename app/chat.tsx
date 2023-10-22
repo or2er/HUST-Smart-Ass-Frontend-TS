@@ -1,58 +1,102 @@
-import { StatusBar } from 'expo-status-bar';
+import { useState } from 'react';
 import { Platform, StyleSheet, ScrollView } from 'react-native';
+import { Ionicons } from '@expo/vector-icons/Ionicons';
+import { View } from '@/components/Themed';
+import {
+    Text,
+    TextInput,
+    IconButton,
+    Button
+} from 'react-native-paper';
 
-import { Text, View } from '@/components/Themed';
-
+// 1 => User
+// 0 => Virtual Assistant
 export default function Chat() {
+    const data = [
+        {
+            user: 1,
+            message: 'I’m to lazy. How to get A Calc I without learn ?'
+        },
+        {
+            user: 0,
+            message: `That’s a tough question. However, there are still some methods that you can used to get A Calc I without learning. The first one is using your money to hire for someone that do the test for you. The second method is have a small conservation with you Calc I teacher.`
+        },
+        {
+            user: 1,
+            message: `Thanks,  I think i will learn it by myself. Please prepare document related to Calc I and send to mail: maivannhatminh@gmail.com tommorow`
+        },
+        {
+            user: 0,
+            message: `Roger, I have add it to auto send mail function. Summary:
+            Topic: Calc I
+            Type: Document
+            Received Mail: maivannhatminh@gmail.com`
+        }
+    ]
+
+    const [text, setText] = useState("");
+    const [messages, setMessages] = useState(data)
+
+    const handleSend = () => {
+        
+    }
+
     return (
-        <View style={styles.container}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1, alignItems: 'flex-end' }}>
-                <View style={styles.chatBubbleRed} >
-                    <Text style={{
-                        color: '#fff'
-                    }} >
-                        I’m to lazy. How to get A Calc I without learn ?
-                    </Text>
-                </View>
+        <View style={styles.mainContainer}>
+            <View style={styles.container}>
+                <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+                    {messages.map((item, key) => {
+                        return (
+                            <View style={item.user == 1 ? styles.chatBubbleRed : styles.chatBubbleWhite} key={key}>
+                                <Text variant='bodyMedium' style={{
+                                    color: item.user ? '#fff' : '#312E49'
+                                }} >
+                                    {item.message}
+                                </Text>
+                            </View>
+                        )
+                    })}
+                </ScrollView>
+            </View>
+
+            <View style={styles.footer}>
                 <View style={{
-                    width: '100%',
-                    backgroundColor: '#F7F7FC',
+                    flex: 1,
                 }} >
-                    <View style={styles.chatBubbleWhite}>
-                        <Text>
-                            That’s a tough question. However, there are still some methods that you can used to get A Calc I without learning.
-                            The first one is using your money to hire for someone that do the test for you. The second method is have a small
-                            conservation with you Calc I teacher.
-                        </Text>
-                    </View>
-                </View>
-                <View style={styles.chatBubbleRed} >
-                    <Text style={{
-                        color: '#fff'
-                    }} >
-                        Thanks,  I think i will learn it by myself. Please prepare document related to Calc I and send to mail: maivannhatminh@gmail.com tommorow
-                    </Text>
-                </View>
-                <View style={{
-                    width: '100%',
-                    backgroundColor: '#F7F7FC',
-                }} >
-                    <View style={styles.chatBubbleWhite}>
-                        <Text>
-                            Roger, I have add it to auto send mail function. Summary:
-                            Topic: Calc I
-                            Type: Document
-                            Received Mail: maivannhatminh@gmail.com
-                        </Text>
-                    </View>
+                    <TextInput
+                        // label="Ask me anything ..."
+                        placeholder='Ask me anything...'
+                        // dense={true}
+                        mode='outlined'
+                        value={text}
+                        onChangeText={text => setText(text)}
+                        // multiline = {true}
+                        // numberOfLines = {2}
+                        style={{
+                            // backgroundColor: 'rgba(247, 247, 252, 1)',
+                            height: 60,
+                            justifyContent: "center"
+                        }}
+                    />
                 </View>
 
-            </ScrollView>
+                <IconButton
+                    icon="send"
+                    size={24}
+                    onPress={() => console.log('Pressed')}
+                    style={{
+                        marginRight: 0
+                    }}
+                />
+            </View>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
+    mainContainer: {
+        flex: 1
+    },
     container: {
         backgroundColor: '#F7F7FC',
         flex: 1,
@@ -64,7 +108,7 @@ const styles = StyleSheet.create({
         width: '60%',
         elevation: 1,
         backgroundColor: 'white',
-        marginBottom: 12
+        marginBottom: 12,
     },
     chatBubbleRed: {
         padding: 10,
@@ -72,6 +116,16 @@ const styles = StyleSheet.create({
         width: '60%',
         elevation: 1,
         backgroundColor: '#F24B62',
-        marginBottom: 12
+        marginBottom: 12,
+        alignSelf: 'flex-end'
+    },
+    footer: {
+        height: 60,
+        padding: 16,
+        borderWidth: 1,
+        borderColor: '#EDEDED',
+        flexDirection: 'row',
+        alignItems: 'center'
+        // backgroundColor:'#000'
     }
 });

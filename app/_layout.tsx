@@ -25,9 +25,11 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
     const [loaded, error] = useFonts({
-        SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
-        DMSans: require('../assets/fonts/DMSans.ttf'),
-        DMSans_Italic: require('../assets/fonts/DMSans-Italic.ttf'),
+        SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
+        DMSans: require('@/assets/fonts/DMSans.ttf'),
+        DMSans_Italic: require('@/assets/fonts/DMSans-Italic.ttf'),
+        SF_Pro_Display_Bold: require('@/assets/fonts/SF-Pro-Display-Bold.otf'),
+        SF_Pro_Display_SemiBold: require('@/assets/fonts/SF-Pro-Display-Semibold.otf'),
         ...FontAwesome.font,
     });
 
@@ -155,14 +157,14 @@ function RootLayoutNav() {
                 {/* colorScheme === 'dark' ? DarkTheme : DefaultTheme */}
                 <Stack>
                     <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-                    <Stack.Screen
+                    {/* <Stack.Screen
                         name="modal"
                         options={{
                             presentation: 'modal',
                             headerShown: false,
                             headerTitle: 'Modal',
                         }}
-                    />
+                    /> */}
                     <Stack.Screen
                         name="af_tasklist"
                         options={{
@@ -172,7 +174,19 @@ function RootLayoutNav() {
                     <Stack.Screen
                         name="chat"
                         options={{
-                            headerTitle: 'Processing Tasks'
+                            headerTitle: 'Your Virtual Assistant'
+                        }}
+                    />
+                    <Stack.Screen
+                        name="login"
+                        options={{
+                            headerShown: false
+                        }}
+                    />
+                    <Stack.Screen
+                        name="signup"
+                        options={{
+                            headerShown: false
                         }}
                     />
                 </Stack>
