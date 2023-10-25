@@ -1,6 +1,6 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import { useFonts } from 'expo-font';
-import { SplashScreen, Stack } from 'expo-router';
+import { SplashScreen, Stack, useRouter } from 'expo-router';
 import { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
@@ -24,6 +24,7 @@ export const unstable_settings = {
 SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
+    const router = useRouter();
     const [loaded, error] = useFonts({
         SpaceMono: require('@/assets/fonts/SpaceMono-Regular.ttf'),
         DMSans: require('@/assets/fonts/DMSans.ttf'),
@@ -39,8 +40,9 @@ export default function RootLayout() {
     }, [error]);
 
     useEffect(() => {
-        if (loaded) {
+        if (loaded) { // Done load
             SplashScreen.hideAsync();
+            router.push('/login')
         }
     }, [loaded]);
 
@@ -171,12 +173,12 @@ function RootLayoutNav() {
                             headerTitle: 'Processing Tasks'
                         }}
                     />
-                    <Stack.Screen
+                    {/* <Stack.Screen
                         name="chat"
                         options={{
                             headerTitle: 'Your Virtual Assistant'
                         }}
-                    />
+                    /> */}
                     <Stack.Screen
                         name="login"
                         options={{

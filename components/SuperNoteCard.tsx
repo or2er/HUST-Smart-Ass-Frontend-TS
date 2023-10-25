@@ -8,7 +8,7 @@ export default function SuperNoteCard({ }) {
     return (
         <View style={{
             backgroundColor: '#FBFBFB',
-            width: 310,
+            // width: 310,
             height: 150,
             padding: 10,
             paddingRight: 18,
@@ -64,7 +64,7 @@ export default function SuperNoteCard({ }) {
                 color: 'rgba(32, 35, 37, 0.50)',
                 fontSize: 12,
                 marginTop: 7,
-                width: 313,
+                // width: 313,
                 lineHeight: 20
             }}>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis  </Text>
         </View>

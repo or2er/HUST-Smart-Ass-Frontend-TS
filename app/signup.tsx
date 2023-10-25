@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, ScrollView } from 'react-native';
 import Ionicon from '@expo/vector-icons/Ionicons';
 import { View } from '@/components/Themed';
-import { useNavigation, } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import {
     Text,
     TextInput,
@@ -13,9 +13,43 @@ import {
 
 export default function SignUp() {
     const navigation = useNavigation();
+    const router = useRouter();
+    let strongPassword = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,})');
+    let mediumPassword = new RegExp('((?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{6,}))|((?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])(?=.{8,}))');
 
     const [hide, setHide] = useState(true);
     const [checked, setChecked] = useState(false);
+    const [firstName, setFirstName] = useState('');
+    const [lastName, setLastName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [color, setColor] = useState('red');
+
+    const hasErrors = () => {
+        return !/\S+@\S+\.\S+/.test(email) && email != '';
+    };
+
+    const checkPass = (pass: string) => {
+        setPassword(pass);
+        if (strongPassword.test(pass)) {
+            setColor('green');
+            setMessage('Strong Password');
+        } else if (mediumPassword.test(pass)) {
+            setColor('yellow');
+            setMessage('Medium Password');
+        } else {
+            setColor('red');
+            setMessage('Weak Password');
+        }
+        // return true;
+    }
+
+    const handleSignUp = () => {
+        setTimeout(() => {
+            router.push('/(tabs)/home');
+        }, 1000);
+    }
 
     return (
         <View style={styles.mainContainer}>
@@ -37,6 +71,8 @@ export default function SignUp() {
                             outlineColor='#747980'
                             textColor='#312E49'
                             placeholderTextColor='#747980'
+                            defaultValue={firstName}
+                            onChangeText={newFirstName => setFirstName(newFirstName)}
                             style={{
                                 backgroundColor: '#fff',
                                 height: 50,
@@ -55,6 +91,8 @@ export default function SignUp() {
                             outlineColor='#747980'
                             textColor='#312E49'
                             placeholderTextColor='#747980'
+                            defaultValue={lastName}
+                            onChangeText={newLastName => setFirstName(newLastName)}
                             style={{
                                 backgroundColor: '#fff',
                                 height: 50,
@@ -73,6 +111,8 @@ export default function SignUp() {
                             outlineColor='#747980'
                             textColor='#312E49'
                             placeholderTextColor='#747980'
+                            onChangeText={newEmail => setEmail(newEmail)}
+                            defaultValue={email}
                             left={<TextInput.Icon icon={() => <Ionicon name='mail-outline' size={24} color='#747980' />} />}
                             style={{
                                 backgroundColor: '#fff',
@@ -80,6 +120,7 @@ export default function SignUp() {
                                 justifyContent: "center"
                             }}
                         />
+
                     </View>
 
                     <View style={styles.form_section} >
@@ -92,6 +133,8 @@ export default function SignUp() {
                             outlineColor='#747980'
                             textColor='#312E49'
                             placeholderTextColor='#747980'
+                            defaultValue={password}
+                            onChangeText={newPassword => setPassword(newPassword)}
                             secureTextEntry={hide}
                             left={<TextInput.Icon icon={() => <Ionicon name='lock-closed-outline' size={24} color='#747980' />} />}
                             right={<TextInput.Icon
@@ -115,7 +158,7 @@ export default function SignUp() {
 
                     <Button
                         mode='contained'
-                        onPress={() => alert('Press!')}
+                        onPress={() => handleSignUp()}
                         style={styles.button}
                     >
                         Sign Up

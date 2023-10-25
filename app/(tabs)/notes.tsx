@@ -60,59 +60,65 @@ export default function NotesScreen() {
                     onPress={() => console.log('Pressed')}
                 />
             </View>
-            <ScrollView style={{ paddingBottom: 12 }}>
-                {activeTab === '1' && (
-                    <>
-                        <View style={styles.container2}>
-                            <Text style={{
-                                fontFamily: 'DMSans',
-                                fontWeight: 'bold',
-                                fontSize: 24,
-                            }}>
-                                Today
-                            </Text>
-                            <NotesCard tagName='P' colorTag='#F37373'></NotesCard>
-                            <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
-                            <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
-                        </View>
+            <View>
+                <ScrollView style={{ paddingBottom: 12 }}>
+                    {activeTab === '1' && (
+                        <>
+                            <View style={styles.container2}>
+                                <Text style={{
+                                    fontFamily: 'DMSans',
+                                    fontWeight: 'bold',
+                                    fontSize: 24,
+                                }}>
+                                    Today
+                                </Text>
+                                <NotesCard tagName='P' colorTag='#F37373'></NotesCard>
+                                <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
+                                <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
+                            </View>
 
-                        <View style={styles.container3}>
-                            <Text style={{
-                                fontFamily: 'DMSans',
-                                fontWeight: 'bold',
-                                fontSize: 24,
-                            }}>
-                                Older
-                            </Text>
-                            <NotesCard tagName='A' colorTag='#FAEBA0'></NotesCard>
-                            <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
-                            <NotesCard tagName='A' colorTag='#A1C0F7'></NotesCard>
-                        </View>
-                    </>
-                )}
-                {activeTab === '2' && (
-                    <>
+                            <View style={styles.container3}>
+                                <Text style={{
+                                    fontFamily: 'DMSans',
+                                    fontWeight: 'bold',
+                                    fontSize: 24,
+                                }}>
+                                    Older
+                                </Text>
+                                <NotesCard tagName='A' colorTag='#FAEBA0'></NotesCard>
+                                <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
+                                <NotesCard tagName='A' colorTag='#A1C0F7'></NotesCard>
+                            </View>
+                        </>
+                    )}
+                    {activeTab === '2' && (
                         <View style={{
-                            marginTop: 25,
-
-                            flex: 1,
-                            flexDirection: 'row',
-                            justifyContent: 'space-evenly'
+                            // marginRight: 16
                         }}>
-                            <TagChip textName='Project'></TagChip>
-                            <TagChip textName='Resource'></TagChip>
-                            <TagChip textName='Archive'></TagChip>
-                            <TagChip textName='Areas'></TagChip>
+                            <View style={{
+                                marginTop: 25,
+                                // flex: 1,
+                                flexDirection: 'row',
+                                justifyContent: 'space-evenly',
+                            }}>
+                                <TagChip textName='Project'></TagChip>
+                                <TagChip textName='Resource'></TagChip>
+                                <TagChip textName='Archive'></TagChip>
+                                <TagChip textName='Areas'></TagChip>
+                            </View>
+                            <View>
+                                <ScrollView style={{ flex:1, paddingBottom: 12, marginRight: 16 }}>
+                                    <SuperNoteCard></SuperNoteCard>
+                                    <SuperNoteCard></SuperNoteCard>
+                                    <SuperNoteCard></SuperNoteCard>
+                                    <SuperNoteCard></SuperNoteCard>
+                                </ScrollView>
+                            </View>
+
                         </View>
-                        <ScrollView style={{ paddingBottom: 12 }}>
-                            <SuperNoteCard></SuperNoteCard>
-                            <SuperNoteCard></SuperNoteCard>
-                            <SuperNoteCard></SuperNoteCard>
-                            <SuperNoteCard></SuperNoteCard>
-                        </ScrollView>
-                    </>
-                )}
-            </ScrollView>
+                    )}
+                </ScrollView>
+            </View>
         </View>
 
     );
@@ -121,17 +127,17 @@ export default function NotesScreen() {
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
-        paddingHorizontal: 24,
+        paddingHorizontal: 16,
         paddingTop: 48,
         justifyContent: 'space-between',
         marginBottom: 10
     },
     container2: {
-        paddingHorizontal: 30,
+        paddingHorizontal: 16,
         paddingTop: 16,
     },
     container3: {
-        paddingHorizontal: 30,
+        paddingHorizontal: 16,
         paddingTop: 20,
         marginTop: 15,
     },
@@ -141,6 +147,5 @@ const styles = StyleSheet.create({
         paddingLeft: 6,
         width: 68,
         height: 54,
-
     },
 });

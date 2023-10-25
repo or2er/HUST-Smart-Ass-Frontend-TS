@@ -40,7 +40,7 @@ export default function TabLayout() {
                                 iconName = focused
                                     ? 'hardware-chip'
                                     : 'hardware-chip-outline';
-                            } else if (route.name === 'messages') {
+                            } else if (route.name === 'chat') {
                                 iconName = focused
                                     ? 'chatbubble-ellipses'
                                     : 'chatbubble-ellipses-outline';
@@ -99,9 +99,11 @@ export default function TabLayout() {
                         }}
                     />
                     <Tabs.Screen
-                        name="messages"
+                        name="chat"
                         options={{
-                            title: 'Conservations',
+                            headerTitle: 'Your Virtual Assistant',
+                            title:'Chat'
+                            // headerShown: false
                         }}
                     />
                     <Tabs.Screen

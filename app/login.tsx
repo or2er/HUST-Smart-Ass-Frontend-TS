@@ -1,21 +1,37 @@
 import { useState } from 'react';
-import { Pressable, StyleSheet, ScrollView } from 'react-native';
+import { Pressable, StyleSheet, ScrollView, Easing } from 'react-native';
 import Ionicon from '@expo/vector-icons/Ionicons';
 import { View } from '@/components/Themed';
-import { useNavigation, } from "expo-router";
+import { useNavigation, useRouter } from "expo-router";
 import {
     Text,
     TextInput,
     IconButton,
     Button,
-    Checkbox
+    Checkbox,
+    HelperText
 } from 'react-native-paper';
 
 export default function Login() {
     const navigation = useNavigation();
+    const router = useRouter();
 
     const [hide, setHide] = useState(true);
     const [checked, setChecked] = useState(false);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const [color, setColor] = useState('red');
+
+    const handleLogin = () => {
+        setTimeout(() => {
+            router.push('/(tabs)/home');
+        }, 1000);
+    }
+
+    const hasErrors = () => {
+        return !/\S+@\S+\.\S+/.test(email) && email != '';
+    };
 
     return (
         <View style={styles.mainContainer}>
@@ -37,6 +53,8 @@ export default function Login() {
                             outlineColor='#747980'
                             textColor='#312E49'
                             placeholderTextColor='#747980'
+                            onChangeText={newEmail => setEmail(newEmail)}
+                            defaultValue={email}
                             left={<TextInput.Icon icon={() => <Ionicon name='mail-outline' size={24} color='#747980' />} />}
                             style={{
                                 backgroundColor: '#fff',
@@ -44,6 +62,9 @@ export default function Login() {
                                 justifyContent: "center"
                             }}
                         />
+                        <HelperText type="error" visible={hasErrors()}>
+                            Email address is invalid!
+                        </HelperText>
                     </View>
 
                     <View style={styles.form_section} >
@@ -56,6 +77,8 @@ export default function Login() {
                             outlineColor='#747980'
                             textColor='#312E49'
                             placeholderTextColor='#747980'
+                            defaultValue={password}
+                            onChangeText={newPassword => setPassword(newPassword)}
                             secureTextEntry={hide}
                             left={<TextInput.Icon icon={() => <Ionicon name='lock-closed-outline' size={24} color='#747980' />} />}
                             right={<TextInput.Icon
@@ -67,6 +90,9 @@ export default function Login() {
                                 justifyContent: "center",
                             }}
                         />
+                        {/* <HelperText type="error" style={{color: color}} visible={true}>
+                            {message}
+                        </HelperText> */}
                     </View>
 
                     <View style={styles.additionalSection} >
@@ -92,7 +118,7 @@ export default function Login() {
 
                     <Button
                         mode='contained'
-                        onPress={() => alert('Press!')}
+                        onPress={() => handleLogin()}
                         style={styles.button}
                     >
                         Sign In
@@ -157,10 +183,11 @@ export default function Login() {
 
                 </View>
             </View>
+
             <View style={{
                 flexDirection: 'row',
                 justifyContent: 'center',
-                marginBottom: 16
+                marginBottom: 16,
             }}>
                 <Text variant='bodyMedium' style={{
                     color: '#747980',
@@ -181,6 +208,7 @@ export default function Login() {
                 </Pressable>
 
             </View>
+
         </View>
 
     );
