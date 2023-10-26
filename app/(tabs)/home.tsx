@@ -11,6 +11,7 @@ import { View } from '@/components/Themed';
 import { Button, Text, Card, useTheme } from 'react-native-paper';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useEffect, useState } from 'react';
+import { useNavigation, useRouter } from "expo-router";
 
 import Colors from '@/constants/Colors';
 
@@ -23,6 +24,7 @@ export default function HomeScreen() {
     const theme = useTheme();
     const colorScheme = useColorScheme();
     const [data, setData] = useState();
+    const router = useRouter();
 
     // useEffect(() => {
     //     fetch('http://192.168.1.3:5001/') // truyền link url của api vào
@@ -117,9 +119,19 @@ export default function HomeScreen() {
                             showsVerticalScrollIndicator={false}
                             showsHorizontalScrollIndicator={false}
                         >
-                            <ImageRecCard />
-                            <ImageRecCard />
-                            <ImageRecCard />
+                            <ImageRecCard  
+                                title={'HEALTH'} 
+                                img={require('@/assets/images/vegetable.jpg')} 
+                                onClick={() => router.push('/home')} 
+                                key={1}
+                            />
+                            <ImageRecCard  
+                                title={'GYM WORKOUT'} 
+                                img={require('@/assets/images/gym.jpg')} 
+                                key={2}
+                                onClick={() => router.push('/exercise_recs')}
+                            />
+                            {/* <ImageRecCard  key={3}/> */}
                         </ScrollView>
                     </View>
 

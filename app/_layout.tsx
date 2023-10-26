@@ -180,6 +180,13 @@ function RootLayoutNav() {
                         }}
                     /> */}
                     <Stack.Screen
+                        name="exercise_recs"
+                        options={{
+                            // headerShown: false
+                            title:'Exercises'
+                        }}
+                    />
+                    <Stack.Screen
                         name="login"
                         options={{
                             headerShown: false
