@@ -18,27 +18,31 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot](https://drive.google.com/file/d/1lcKHLL5unX4cBCD85KTolEGwZY2wC2KM/view?usp=drive_link)
+![screenshot](./assets/images/demo.png)
 
 ## Key Features
 
-* LivePreview - Make changes, See changes
-  - Instantly see what your Markdown documents look like in HTML as you create them.
-* Sync Scrolling
-  - While you type, LivePreview will automatically scroll to the current location you're editing.
-* GitHub Flavored Markdown  
-* Syntax highlighting
-* [KaTeX](https://khan.github.io/KaTeX/) Support
-* Dark/Light mode
-* Toolbar for basic Markdown formatting
-* Supports multiple cursors
-* Save the Markdown preview as PDF
-* Emoji support in preview :tada:
-* App will keep alive in tray for quick usage
-* Full screen mode
-  - Write distraction free.
-* Cross platform
-  - Windows, macOS and Linux ready.
+* Auto Functions
+  - With this feature, users can assign simple tasks to virtual assistants. Then, the virtual assistant will automatically handle those tasks for the user before the specified deadline
+* Organize tasks accroding to P.A.R.A structure
+  - When users record their upcoming tasks, the virtual assistant will automatically distribute the user's tasks into sections according to the P.A.R.A structure.
+* Recommendations:
+  - By using users' personal data, the assistant can provide useful recommendations for users.
+  - Exercises recommendations: Providing user with manys work out that can be filtered to fit with user
+  - Diet recommendation: Check health of user according meal, workout frequency and give strategy and healthy recipes for user  
+* Virtual assistant: 
+  - The created feature acts as an effective assistant for users with the ability to give accurate answers and perform assigned tasks.
+* Cross platform supported!
+* Ability to collect data and summarize a document according to the topic user require
+* Context search on video and summarize 😎
+
+## Future Features
+- [] Update picture for each workout in exercise recommendation
+- [] Provide suitable workout plans according to user data linked with healthy recipes provided (Make by using AI model)
+- [] Dark mode 
+- [] Imporve scalability
+- [] Comple authentication (as current version only use to demo in hackathon so authentication haven't been completed yet)
+- [] Deploy to CH Play if there are many users want to experience this app 
 
 ## How To Use
 
@@ -46,10 +50,7 @@ To clone and run this application, you'll need [Git](https://git-scm.com) and [N
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/amitmerchant1990/electron-markdownify
-
-# Go into the repository
-$ cd electron-markdownify
+$ git clone https://github.com/or2er/HUST-Smart-Ass-Frontend-TS.git
 
 # Install dependencies
 $ npm install
@@ -62,31 +63,19 @@ $ npm start
 > If you're using Linux Bash for Windows, [see this guide](https://www.howtogeek.com/261575/how-to-run-graphical-linux-desktop-applications-from-windows-10s-bash-shell/) or use `node` from the command prompt.
 
 
-## Download
-
-You can [download](https://github.com/amitmerchant1990/electron-markdownify/releases/tag/v1.2.0) the latest installable version of Markdownify for Windows, macOS and Linux.
-
 ## Emailware
 
-Markdownify is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <bullredeyes@gmail.com> about anything you'd want to say about this software. I'd really appreciate it!
+Markdownify is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning, if you liked using this app or it has helped you in any way, I'd like you send me an email at <maivannhatminh2005@gmail.com> about anything you'd want to say about this software. I'd really appreciate it!
 
 ## Credits
 
 This software uses the following open source packages:
 
-- [Electron](http://electron.atom.io/)
+- [React Native](https://reactnative.dev/)
 - [Node.js](https://nodejs.org/)
-- [Marked - a markdown parser](https://github.com/chjj/marked)
-- [showdown](http://showdownjs.github.io/showdown/)
-- [CodeMirror](http://codemirror.net/)
-- Emojis are taken from [here](https://github.com/arvida/emoji-cheat-sheet.com)
-- [highlight.js](https://highlightjs.org/)
+- [React Native Paper](https://reactnativepaper.com/)
 
-## Related
-
-[markdownify-web](https://github.com/amitmerchant1990/markdownify-web) - Web version of Markdownify
-
-## Support
+<!-- ## Support
 
 <a href="https://www.buymeacoffee.com/5Zn8Xh3l9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
 
@@ -94,20 +83,24 @@ This software uses the following open source packages:
 
 <a href="https://www.patreon.com/amitmerchant">
 	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
-
+</a> -->
+<!-- 
 ## You may also like...
 
 - [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
-- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
+- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS -->
 
-## License
+## Authors
 
-MIT
+- Đỗ Minh Nhật - Frontend Dev + AI Engineer ([@nhatdm22022537](https://github.com/nhatdm22022537))
+- Khổng Ngọc Anh - Backend Dev + AI Engineer ([@kanawanttotimetravel](https://github.com/kanawanttotimetravel))
+- Phạm Nhật Quang - Backend Dev ([@Legend0fHell](https://github.com/Legend0fHell))
+- Nguyễn Quang Ninh - AI Engineer ([@qninhdt](https://github.com/qninhdt))
+- Mai Văn Nhật Minh - Frontend Dev + UI/UX Designer ([@Supporter09](https://github.com/Supporter09))
 
 ---
 
-> [amitmerchant.com](https://www.amitmerchant.com) &nbsp;&middot;&nbsp;
-> GitHub [@amitmerchant1990](https://github.com/amitmerchant1990) &nbsp;&middot;&nbsp;
-> Twitter [@amit_merchant](https://twitter.com/amit_merchant)
+
+> GitHub [@Supporter09](https://github.com/Supporter09) &nbsp;&middot;&nbsp;
+<!-- > Twitter [@amit_merchant](https://twitter.com/amit_merchant) -->
 

@@ -196,7 +196,7 @@ export default function Login() {
                     Don't have an account?
                 </Text>
                 <Pressable onPress={() => {
-                    navigation.navigate("signup");
+                    router.push("/signup");
                 }}>
                     <Text variant='bodyMedium' style={{
                         color: 'rgba(239, 30, 59, 0.7)',
