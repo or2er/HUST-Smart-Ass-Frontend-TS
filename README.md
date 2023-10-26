@@ -37,12 +37,12 @@
 * Context search on video and summarize 😎
 
 ## Future Features
-- [] Update picture for each workout in exercise recommendation
-- [] Provide suitable workout plans according to user data linked with healthy recipes provided (Make by using AI model)
-- [] Dark mode 
-- [] Imporve scalability
-- [] Comple authentication (as current version only use to demo in hackathon so authentication haven't been completed yet)
-- [] Deploy to CH Play if there are many users want to experience this app 
+- [ ] Update picture for each workout in exercise recommendation
+- [ ] Provide suitable workout plans according to user data linked with healthy recipes provided (Make by using AI model)
+- [ ] Dark mode 
+- [ ] Imporve scalability
+- [ ] Comple authentication (as current version only use to demo in hackathon so authentication haven't been completed yet)
+- [ ] Deploy to CH Play if there are many users want to experience this app 
 
 ## How To Use
 
