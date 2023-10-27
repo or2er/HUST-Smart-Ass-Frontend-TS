@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import { Platform, StyleSheet, ScrollView } from 'react-native';
-import { Ionicons } from '@expo/vector-icons/Ionicons';
 import { View } from '@/components/Themed';
-import {
-    Text,
-    TextInput,
-    IconButton,
-    Button
-} from 'react-native-paper';
+import { Text, TextInput, IconButton, Button } from 'react-native-paper';
 
 // 1 => User
 // 0 => Virtual Assistant
@@ -15,31 +9,34 @@ export default function Chat() {
     const data = [
         {
             user: 1,
-            message: 'I’m to lazy. How to get A Calc I without learn ?'
+            message: 'I’m to lazy. How to get A Calc I without learn ?',
         },
         {
             user: 0,
-            message: `That’s a tough question. However, there are still some methods that you can used to get A Calc I without learning. The first one is using your money to hire for someone that do the test for you. The second method is have a small conservation with you Calc I teacher.`
+            message: `That’s a tough question. However, there are still some methods that you can used to get A Calc I without learning. The first one is using your money to hire for someone that do the test for you. The second method is have a small conservation with you Calc I teacher.`,
         },
         {
             user: 1,
-            message: `Thanks,  I think i will learn it by myself. Please prepare document related to Calc I and send to mail: maivannhatminh@gmail.com tommorow`
+            message: `Thanks,  I think i will learn it by myself. Please prepare document related to Calc I and send to mail: maivannhatminh@gmail.com tommorow`,
         },
         {
             user: 0,
             message: `Roger, I have add it to auto send mail function. Summary:
             Topic: Calc I
             Type: Document
-            Received Mail: maivannhatminh@gmail.com`
-        }
-    ]
+            Received Mail: maivannhatminh@gmail.com`,
+        },
+    ];
 
-    const [text, setText] = useState("");
-    const [messages, setMessages] = useState(data)
+    const [text, setText] = useState('');
+    const [messages, setMessages] = useState(data);
 
-    const handleSend = () => {
-        
-    }
+    const handleSend = async () => {
+        console.log(process.env.EXPO_PUBLIC_API_URL);
+        const res = await fetch(`${process.env.EXPO_PUBLIC_API_URL}/`);
+        const text = await res.text();
+        console.log(text);
+    };
 
     return (
         <View style={styles.mainContainer}>
@@ -47,35 +44,47 @@ export default function Chat() {
                 <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
                     {messages.map((item, key) => {
                         return (
-                            <View style={item.user == 1 ? styles.chatBubbleRed : styles.chatBubbleWhite} key={key}>
-                                <Text variant='bodyMedium' style={{
-                                    color: item.user ? '#fff' : '#312E49'
-                                }} >
+                            <View
+                                style={
+                                    item.user == 1
+                                        ? styles.chatBubbleRed
+                                        : styles.chatBubbleWhite
+                                }
+                                key={key}
+                            >
+                                <Text
+                                    variant="bodyMedium"
+                                    style={{
+                                        color: item.user ? '#fff' : '#312E49',
+                                    }}
+                                >
                                     {item.message}
                                 </Text>
                             </View>
-                        )
+                        );
                     })}
                 </ScrollView>
             </View>
 
             <View style={styles.footer}>
-                <View style={{
-                    flex: 1,
-                }} >
+                <View
+                    style={{
+                        flex: 1,
+                    }}
+                >
                     <TextInput
                         // label="Ask me anything ..."
-                        placeholder='Ask me anything...'
+                        placeholder="Ask me anything..."
                         // dense={true}
-                        mode='outlined'
+                        mode="outlined"
                         value={text}
-                        onChangeText={text => setText(text)}
+                        onChangeText={(text) => setText(text)}
                         // multiline = {true}
                         // numberOfLines = {2}
                         style={{
                             // backgroundColor: 'rgba(247, 247, 252, 1)',
                             height: 60,
-                            justifyContent: "center"
+                            justifyContent: 'center',
                         }}
                     />
                 </View>
@@ -83,9 +92,9 @@ export default function Chat() {
                 <IconButton
                     icon="send"
                     size={24}
-                    onPress={() => console.log('Pressed')}
+                    onPress={handleSend}
                     style={{
-                        marginRight: 0
+                        marginRight: 0,
                     }}
                 />
             </View>
@@ -95,12 +104,12 @@ export default function Chat() {
 
 const styles = StyleSheet.create({
     mainContainer: {
-        flex: 1
+        flex: 1,
     },
     container: {
         backgroundColor: '#F7F7FC',
         flex: 1,
-        padding: 12
+        padding: 12,
     },
     chatBubbleWhite: {
         padding: 10,
@@ -117,7 +126,7 @@ const styles = StyleSheet.create({
         elevation: 1,
         backgroundColor: '#F24B62',
         marginBottom: 12,
-        alignSelf: 'flex-end'
+        alignSelf: 'flex-end',
     },
     footer: {
         height: 60,
@@ -125,7 +134,7 @@ const styles = StyleSheet.create({
         borderWidth: 1,
         borderColor: '#EDEDED',
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
         // backgroundColor:'#000'
-    }
+    },
 });
