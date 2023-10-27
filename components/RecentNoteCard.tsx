@@ -13,8 +13,10 @@ export default function RecentNoteCard() {
 
     return (
         <Card style={{
-            backgroundColor:'#F0F0FF',
-            marginBottom: 8
+            backgroundColor: '#F0F0FF',
+            marginBottom: 14,
+            marginRight: 3,
+            marginLeft: 3
         }} >
             <Card.Content>
                 <Text variant='bodyLarge'

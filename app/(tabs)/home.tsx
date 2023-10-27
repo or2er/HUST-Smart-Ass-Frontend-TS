@@ -119,15 +119,15 @@ export default function HomeScreen() {
                             showsVerticalScrollIndicator={false}
                             showsHorizontalScrollIndicator={false}
                         >
-                            <ImageRecCard  
-                                title={'HEALTH'} 
-                                img={require('@/assets/images/vegetable.jpg')} 
-                                onClick={() => router.push('/home')} 
+                            <ImageRecCard
+                                title={'HEALTH'}
+                                img={require('@/assets/images/vegetable.jpg')}
+                                onClick={() => router.push('/home')}
                                 key={1}
                             />
-                            <ImageRecCard  
-                                title={'GYM WORKOUT'} 
-                                img={require('@/assets/images/gym.jpg')} 
+                            <ImageRecCard
+                                title={'GYM WORKOUT'}
+                                img={require('@/assets/images/gym.jpg')}
                                 key={2}
                                 onClick={() => router.push('/exercise_recs')}
                             />
