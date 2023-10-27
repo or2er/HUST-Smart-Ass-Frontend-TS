@@ -1,7 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Platform, StyleSheet, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons/Ionicons';
 import { View } from '@/components/Themed';
+import { socket } from '@/utils/socketio';
+
 import {
     Text,
     TextInput,
@@ -12,33 +14,29 @@ import {
 // 1 => User
 // 0 => Virtual Assistant
 export default function Chat() {
-    const data = [
-        {
-            user: 1,
-            message: 'I’m to lazy. How to get A Calc I without learn ?'
-        },
-        {
-            user: 0,
-            message: `That’s a tough question. However, there are still some methods that you can used to get A Calc I without learning. The first one is using your money to hire for someone that do the test for you. The second method is have a small conservation with you Calc I teacher.`
-        },
-        {
-            user: 1,
-            message: `Thanks,  I think i will learn it by myself. Please prepare document related to Calc I and send to mail: maivannhatminh@gmail.com tommorow`
-        },
-        {
-            user: 0,
-            message: `Roger, I have add it to auto send mail function. Summary:
-            Topic: Calc I
-            Type: Document
-            Received Mail: maivannhatminh@gmail.com`
-        }
-    ]
-
     const [text, setText] = useState("");
-    const [messages, setMessages] = useState(data)
+    const [messages, setMessages] = useState([]);
+
+    socket.on("get-msg", (id, sender, msg) => {
+        console.log("New message got", id, sender, msg);
+        setMessages([...messages, {
+            user: sender,
+            message: msg,
+        }]);
+    });
+
+    useEffect(() => {
+        console.log("Triggered")
+        socket.emit("post-past-msg", "chat", 20);
+    }, []);
 
     const handleSend = () => {
-        
+        console.log("Post message");
+        socket.emit("post-msg", "chat", text);
+        setMessages([...messages, {
+            user: 1,
+            message: text,
+        }]);
     }
 
     return (
@@ -83,7 +81,7 @@ export default function Chat() {
                 <IconButton
                     icon="send"
                     size={24}
-                    onPress={() => console.log('Pressed')}
+                    onPress={handleSend}
                     style={{
                         marginRight: 0
                     }}
