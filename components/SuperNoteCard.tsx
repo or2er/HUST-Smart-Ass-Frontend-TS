@@ -23,8 +23,10 @@ export default function SuperNoteCard({ }) {
             shadowOpacity: 1,
             elevation: 4,
             borderRadius: 13,
-            marginTop: 30,
-            marginLeft: 24
+            marginTop: 5,
+            marginLeft: 24,
+            marginBottom: 20,
+            marginRight: 6
         }}>
             <Text style={{
                 fontFamily: 'DMSans',

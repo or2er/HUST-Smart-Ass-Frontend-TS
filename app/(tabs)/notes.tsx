@@ -61,7 +61,7 @@ export default function NotesScreen() {
                 />
             </View>
             <View>
-                <ScrollView style={{ paddingBottom: 12 }}>
+                <ScrollView>
                     {activeTab === '1' && (
                         <>
                             <View style={styles.container2}>
@@ -88,6 +88,8 @@ export default function NotesScreen() {
                                 <NotesCard tagName='A' colorTag='#FAEBA0'></NotesCard>
                                 <NotesCard tagName='R' colorTag='#E1FFE4'></NotesCard>
                                 <NotesCard tagName='A' colorTag='#A1C0F7'></NotesCard>
+                                <NotesCard tagName='A' colorTag='#A1C0F7'></NotesCard>
+
                             </View>
                         </>
                     )}
@@ -106,8 +108,8 @@ export default function NotesScreen() {
                                 <TagChip textName='Archive'></TagChip>
                                 <TagChip textName='Areas'></TagChip>
                             </View>
-                            <View>
-                                <ScrollView style={{ flex:1, paddingBottom: 12, marginRight: 16 }}>
+                            <View style={styles.container4}>
+                                <ScrollView style={{ flex:1}}>
                                     <SuperNoteCard></SuperNoteCard>
                                     <SuperNoteCard></SuperNoteCard>
                                     <SuperNoteCard></SuperNoteCard>
@@ -140,6 +142,12 @@ const styles = StyleSheet.create({
         paddingHorizontal: 16,
         paddingTop: 20,
         marginTop: 15,
+        marginBottom: 40
+    },
+    container4: {
+        marginTop:20,
+        marginBottom: 120,
+        marginRight: 15
     },
     fab: {
         marginTop: 10,
