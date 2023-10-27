@@ -3,6 +3,7 @@ import { Platform, StyleSheet, ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons/Ionicons';
 import { View } from '@/components/Themed';
 import { socket } from '@/utils/socketio';
+import { BACKEND_URL } from "@env"
 
 import {
     Text,
@@ -20,6 +21,7 @@ export default function Chat() {
     const [messages, setMessages] = useState([]);
     const [trigger, setTrigger] = useState(false)
     const scrollViewRef = useRef();
+    const requestUri = "http://" + BACKEND_URL;
 
     useEffect(() => {
         console.log("Triggered")
@@ -33,7 +35,7 @@ export default function Chat() {
             redirect: 'follow'
         };
 
-        fetch("http://192.168.143.131:8000/msg/read", requestOptions)
+        fetch(`${requestUri}/msg/read`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result['data']);
@@ -54,7 +56,6 @@ export default function Chat() {
     }, []);
 
     const handleSend = () => {
-        console.log("Post message");
         socket.emit("post-msg", "chat", text);
         setMessages([...messages, {
             user: 1,
