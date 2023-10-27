@@ -180,6 +180,13 @@ function RootLayoutNav() {
                         }}
                     /> */}
                     <Stack.Screen
+                        name="diet_recs"
+                        options={{
+                            // headerShown: false
+                            title:'Diet Recommendation'
+                        }}
+                    />
+                    <Stack.Screen
                         name="exercise_recs"
                         options={{
                             // headerShown: false

@@ -122,7 +122,7 @@ export default function HomeScreen() {
                             <ImageRecCard  
                                 title={'HEALTH'} 
                                 img={require('@/assets/images/vegetable.jpg')} 
-                                onClick={() => router.push('/home')} 
+                                onClick={() => router.push('/diet_recs')} 
                                 key={1}
                             />
                             <ImageRecCard  

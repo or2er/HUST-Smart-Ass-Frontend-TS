@@ -61,7 +61,10 @@ export default function NotesScreen() {
                 />
             </View>
             <View>
-                <ScrollView>
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                >
                     {activeTab === '1' && (
                         <>
                             <View style={styles.container2}>
@@ -109,7 +112,11 @@ export default function NotesScreen() {
                                 <TagChip textName='Areas'></TagChip>
                             </View>
                             <View style={styles.container4}>
-                                <ScrollView style={{ flex:1}}>
+                                <ScrollView
+                                    showsVerticalScrollIndicator={false}
+                                    showsHorizontalScrollIndicator={false}
+                                    style={{ flex: 1 }}
+                                >
                                     <SuperNoteCard></SuperNoteCard>
                                     <SuperNoteCard></SuperNoteCard>
                                     <SuperNoteCard></SuperNoteCard>
@@ -145,7 +152,7 @@ const styles = StyleSheet.create({
         marginBottom: 40
     },
     container4: {
-        marginTop:20,
+        marginTop: 20,
         marginBottom: 120,
         marginRight: 15
     },

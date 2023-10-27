@@ -26,7 +26,10 @@ export default function MessagesScreen() {
 
     return (
         <View style={style.container}>
-            <ScrollView style={{ backgroundColor: '#fff' }}>
+            <ScrollView
+                showsVerticalScrollIndicator={false}
+                showsHorizontalScrollIndicator={false}
+                style={{ backgroundColor: '#fff' }}>
                 <View >
                     {/* Header */}
                     <View style={style.header}>
