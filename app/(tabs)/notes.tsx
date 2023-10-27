@@ -3,6 +3,8 @@ import SwitchSelector from "react-native-switch-selector";
 import { Text, View } from '@/components/Themed';
 import { FAB } from 'react-native-paper';
 import Colors from '@/constants/Colors';
+import { useNavigation, useRouter } from "expo-router";
+
 import {
     Pressable,
     ScrollView,
@@ -22,10 +24,14 @@ const options = [
 
 
 export default function NotesScreen() {
+    const router = useRouter()
     const [activeTab, setActiveTab] = useState('1');
     const switchTab = (value) => {
         setActiveTab(value);
     };
+    const changeTab = () => {
+        router.push('/createNote')
+    }
     return (
         <View style={{
             flex: 1,
@@ -57,7 +63,7 @@ export default function NotesScreen() {
                 <FAB
                     icon="plus"
                     style={styles.fab}
-                    onPress={() => console.log('Pressed')}
+                    onPress={changeTab}
                 />
             </View>
             <View>
@@ -109,7 +115,7 @@ export default function NotesScreen() {
                                 <TagChip textName='Areas'></TagChip>
                             </View>
                             <View style={styles.container4}>
-                                <ScrollView style={{ flex:1}}>
+                                <ScrollView style={{ flex: 1 }}>
                                     <SuperNoteCard></SuperNoteCard>
                                     <SuperNoteCard></SuperNoteCard>
                                     <SuperNoteCard></SuperNoteCard>
@@ -145,7 +151,7 @@ const styles = StyleSheet.create({
         marginBottom: 40
     },
     container4: {
-        marginTop:20,
+        marginTop: 20,
         marginBottom: 120,
         marginRight: 15
     },
