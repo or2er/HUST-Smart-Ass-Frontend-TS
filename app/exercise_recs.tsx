@@ -312,7 +312,10 @@ export default function ExerciseRecommendation() {
             <View style={{
                 // paddingBottom:32
             }} >
-                <ScrollView>
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
+                >
                     {data && data.map((item, key) => {
                         return (
                             <ExerciseCard data={item} key_card={key} />

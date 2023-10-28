@@ -45,7 +45,7 @@ export default function Chat() {
                     let tmp = {
                         user: element[0],
                         message: element[1]
-                    }   
+                    }
                     res.push(tmp)
                 });
                 console.log("check!")
@@ -77,6 +77,8 @@ export default function Chat() {
         <View style={styles.mainContainer}>
             <View style={styles.container}>
                 <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false}
                     contentContainerStyle={{ flexGrow: 1 }}
                     ref={scrollViewRef}
                     onContentSizeChange={() => scrollViewRef.current.scrollToEnd({ animated: true })}
