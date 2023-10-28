@@ -1,6 +1,6 @@
 import { io } from "socket.io-client";
-import {SOCKETIO_URL} from "@env"
+import {BACKEND_URL} from "@env"
 
-export const socket = io("ws://192.168.1.3:8000/");
-// console.log(socket)
-console.log("WebSocket initialized at: ", SOCKETIO_URL);
+let ws_url = "ws://" + BACKEND_URL + "/";
+export const socket = io(ws_url);
+console.log("WebSocket initialized at: ", ws_url);
