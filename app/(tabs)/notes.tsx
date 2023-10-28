@@ -4,6 +4,7 @@ import { Text, View } from '@/components/Themed';
 import { FAB } from 'react-native-paper';
 import Colors from '@/constants/Colors';
 import { useNavigation, useRouter } from "expo-router";
+import Dialog from "react-native-dialog";
 
 import {
     Pressable,
@@ -16,6 +17,7 @@ import NotesCard from '@/components/NotesCard';
 import { useState } from 'react';
 import TagChip from '@/components/TagChip';
 import SuperNoteCard from '@/components/SuperNoteCard';
+import PopupTextInput from '@/components/PopUpTextInput';
 
 const options = [
     { label: "Task", value: "1" },
@@ -26,12 +28,27 @@ const options = [
 export default function NotesScreen() {
     const router = useRouter()
     const [activeTab, setActiveTab] = useState('1');
+
     const switchTab = (value) => {
         setActiveTab(value);
     };
     const changeTab = () => {
-        router.push('/createNote')
+        if(activeTab === '2')
+            router.push('/createNote')
+        if(activeTab === '1') {
+            setModalVisible(true)
+        }
+
     }
+
+    const [isModalVisible, setModalVisible] = useState(false);
+    const [enteredText, setEnteredText] = useState('');
+
+  const handleSave = (text) => {
+    setEnteredText(text);
+  };
+
+
     return (
         <View style={{
             flex: 1,
@@ -127,6 +144,11 @@ export default function NotesScreen() {
                     )}
                 </ScrollView>
             </View>
+            <PopupTextInput
+        isVisible={isModalVisible}
+        onSave={handleSave}
+        onCancel={() => setModalVisible(false)}
+      />
         </View>
 
     );
