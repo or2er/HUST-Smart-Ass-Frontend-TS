@@ -6,7 +6,10 @@ export default function ChatScreen() {
     const [text, setText] = useState(initialText)
 
     return (
-        <ScrollView style={style.container} contentContainerStyle={{ flexGrow: 1, alignItems: 'flex-end' }}>
+        <ScrollView
+            showsVerticalScrollIndicator={false}
+            showsHorizontalScrollIndicator={false}
+            style={style.container} contentContainerStyle={{ flexGrow: 1, alignItems: 'flex-end' }}>
             <View style={style.chatBubbleRed} >
                 <Text style={{
                     color: '#fff'
@@ -44,7 +47,7 @@ export default function ChatScreen() {
                     </Text>
                 </View>
             </View>
-            
+
         </ScrollView>
     )
 }

@@ -62,7 +62,9 @@ export default function Messages() {
 
             {/* Body */}
             <View>
-                <ScrollView>
+                <ScrollView
+                    showsVerticalScrollIndicator={false}
+                    showsHorizontalScrollIndicator={false} >
                     {trash_data.map((item, key) => {
                         return (
                             <View key={key} style={{
