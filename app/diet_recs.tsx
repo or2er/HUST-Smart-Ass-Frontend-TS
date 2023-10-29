@@ -13,6 +13,7 @@ import {
     Searchbar,
     TextInput
 } from 'react-native-paper'
+import { BACKEND_URL } from "@env"
 
 import RecipeCard from '@/components/RecipeCard';
 
@@ -96,8 +97,9 @@ export default function DietRecommendation() {
             body: formdata,
             redirect: 'follow'
         };
+        const requestUri = "http://" + BACKEND_URL;
 
-        fetch("http://192.168.1.3:8000/recommend", requestOptions)
+        fetch(`${requestUri}/recommend`, requestOptions)
             .then(response => response.json())
             .then(result => {
                 // console.log(result);
@@ -551,7 +553,7 @@ export default function DietRecommendation() {
 
                             {data && data.diet.breakfast.map((item, key) => {
                                 return (
-                                    <RecipeCard data={item} key_c={key} />
+                                    <RecipeCard data={item} key_c={key} key={key} />
                                 )
                             })}
 
@@ -568,7 +570,7 @@ export default function DietRecommendation() {
 
                             {data && data.diet.lunch.map((item, key) => {
                                 return (
-                                    <RecipeCard data={item} key_c={key} />
+                                    <RecipeCard data={item} key_c={key} key={key} />
                                 )
                             })}
 
@@ -585,7 +587,7 @@ export default function DietRecommendation() {
 
                             {data && data.diet.dinner.map((item, key) => {
                                 return (
-                                    <RecipeCard data={item} key_c={key} />
+                                    <RecipeCard data={item} key_c={key} key={key} />
                                 )
                             })}
 

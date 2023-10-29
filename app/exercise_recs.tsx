@@ -318,7 +318,7 @@ export default function ExerciseRecommendation() {
                 >
                     {data && data.map((item, key) => {
                         return (
-                            <ExerciseCard data={item} key_card={key} />
+                            <ExerciseCard data={item} key_card={key} key={key} />
                         )
                     })}
 

@@ -19,17 +19,18 @@ This is an example of rendering Markdown in a React Native app.
 ![Nguyen Quang Ninh](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 ![Nguyen Quang Ninh](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
 `;
-export default function SavedScreen() {    return (
-        <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
-          <Markdown >{markdownContent}</Markdown>
-        </ScrollView>
-      );
+export default function SavedScreen() {
+  return (
+    <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
+      <Markdown >{markdownContent}</Markdown>
+    </ScrollView>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        paddingHorizontal: 24,
-        backgroundColor: 'white',
-      },
+  container: {
+    flex: 1,
+    paddingHorizontal: 24,
+    backgroundColor: 'white',
+  },
 });

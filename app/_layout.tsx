@@ -168,9 +168,9 @@ function RootLayoutNav() {
                         }}
                     /> */}
                     <Stack.Screen
-                        name="af_tasklist"
+                        name="ai_assistants"
                         options={{
-                            headerTitle: 'Processing Tasks'
+                            headerTitle: 'AI Assistants'
                         }}
                     />
                     {/* <Stack.Screen

@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons/Ionicons';
 import { View } from '@/components/Themed';
 import { socket } from '@/utils/socketio';
 import { BACKEND_URL } from "@env"
-
+import { useLocalSearchParams } from 'expo-router'
 import {
     Text,
     TextInput,
@@ -19,9 +19,12 @@ import {
 export default function Chat() {
     const [text, setText] = useState("");
     const [messages, setMessages] = useState([]);
-    const [trigger, setTrigger] = useState(false)
+    const [typing, setTyping] = useState(false);
+    const [chatVideo, setChatVideo] = useState(false);
     const scrollViewRef = useRef();
     const requestUri = "http://" + BACKEND_URL;
+    const { id } = useLocalSearchParams();
+    // console.log(id)
 
     useEffect(() => {
         console.log("Triggered")
@@ -48,28 +51,122 @@ export default function Chat() {
                     }
                     res.push(tmp)
                 });
-                console.log("check!")
-                setMessages(res)
+                // console.log("check!")
+                if (id) {
+                    console.log('Id Check')
+                    setMessages([...res, {
+                        user: 0,
+                        message: { 'msg': `Start interacting with video ${id} !. Type 'End interact' to stop interacting with video`, 'type': 'normal', 'data': '' },
+                    }]);
+                    console.log(messages)
+                    setChatVideo(true)
+                } else {
+                    setMessages(res)
+                }
             })
             .catch(error => console.log('error', error));
-
-    }, []);
+    }, [id]);
 
     const handleSend = () => {
-        socket.emit("post-msg", "chat", text);
-        setMessages([...messages, {
-            user: 1,
-            message: text,
-        }]);
-        setText("")
+        // Handle chat video
+        if (chatVideo == false && text.toLowerCase() != 'end interact') {
+            console.log('Trigger normal')
+            socket.emit("post-msg", "chat", text); // Normal chat
+        }
+        if (chatVideo == true && text.toLowerCase() != 'end interact') {
+            socket.emit("post-msg", id, text); // Chat video
+        }
+
+        // Handle link recommendation to chat
+        const diet_rec_keywords = ['diet rec', 'diet recommendation', 'recipe recommendation', 'health recommendation']
+        const ex_rec_keywords = ['workout', 'exercise recommendation']
+        // if (text.toLowerCase().includes('diet recommendation')){
+        //     setText("");
+
+        //     setTyping(true)
+        //     var formdata = new FormData();
+        //     formdata.append("age", '25');
+        //     formdata.append("height", '170');
+        //     formdata.append("weight", '68');
+        //     formdata.append("gender", 'male');
+        //     formdata.append("activity", 'Light exercise');
+        //     formdata.append("weight_plan", 'Mild weight loss');
+
+        //     var requestOptions = {
+        //         method: 'POST',
+        //         body: formdata,
+        //         redirect: 'follow'
+        //     };
+        //     const requestUri = "http://" + BACKEND_URL;
+
+        //     fetch(`${requestUri}/recommend`, requestOptions)
+        //         .then(response => response.json())
+        //         .then(result => {
+        //             console.log(result);
+        //             // setData(result);
+        //             let res = 'The diet recommendations are: \n'
+        //             let diet = result.diet;
+        //             let breakfast = diet.breakfast;
+        //             let lunch = diet.lunch;
+        //             let dinner = diet.dinner;
+        //             res = res + 'Breakfast: \n'
+        //             breakfast.forEach(element => {
+        //                 res = res + element['Name'] + '\n'
+        //             });
+        //             res = res + 'Lunch: \n'
+        //             lunch.forEach(element => {
+        //                 res = res + element['Name'] + '\n'
+        //             });
+        //             res = res + 'Dinner: \n'
+        //             dinner.forEach(element => {
+        //                 res = res + element['Name'] + '\n'
+        //             });
+        //             setMessages([...messages,
+        //                 {
+        //                     user: 1,
+        //                     message: { 'msg': text, 'type': 'normal', 'data': '' },
+        //                 },
+        //                 {
+        //                 user: 0,
+        //                 message: { 'msg': res, 'type': 'normal', 'data': '' },
+        //             }]);
+        //             setTyping(false)
+        //             console.log(messages)
+        //         })
+        //         .catch(error => console.log('error', error));
+        // }
+
+        // Handle add message to list for chat video and normal chat
+        if (text.toLowerCase() == 'end interact') {
+            setChatVideo(false)
+            setMessages([...messages,
+            {
+                user: 1,
+                message: { 'msg': text, 'type': 'normal', 'data': '' },
+            },
+            {
+                user: 0,
+                message: { 'msg': `End interacting. Thanks!`, 'type': 'normal', 'data': '' },
+            }]);
+            setText("");
+            setTyping(false);
+        } else {
+            setMessages([...messages, {
+                user: 1,
+                message: { 'msg': text, 'type': 'normal', 'data': '' },
+            }]);
+            setText("");
+            setTyping(true);
+        }
     }
 
     useEffect(() => {
-        socket.on("get-msg", (id, sender, msg) => {
+        socket.on("get-msg", (id, sender, response_msg) => {
             setMessages([...messages, {
                 user: sender,
-                message: msg,
+                message: response_msg,
             }]);
+            setTyping(false);
         });
     }, [messages])
 
@@ -89,11 +186,16 @@ export default function Chat() {
                                 <Text variant='bodyMedium' style={{
                                     color: item.user ? '#fff' : '#312E49'
                                 }} >
-                                    {item.message}
+                                    {item.message.msg}
                                 </Text>
                             </View>
                         )
                     })}
+                    {typing && (
+                        <Text variant='bodyMedium' >
+                            Typing ...
+                        </Text>
+                    )}
                 </ScrollView>
             </View>
 

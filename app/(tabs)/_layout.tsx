@@ -36,7 +36,7 @@ export default function TabLayout() {
                                 iconName = focused
                                     ? 'document-text'
                                     : 'document-text-outline';
-                            } else if (route.name === 'ai_assistants') {
+                            } else if (route.name === 'af_tasklist') {
                                 iconName = focused
                                     ? 'hardware-chip'
                                     : 'hardware-chip-outline';
@@ -92,10 +92,10 @@ export default function TabLayout() {
                         }}
                     />
                     <Tabs.Screen
-                        name="ai_assistants"
+                        name="af_tasklist"
                         options={{
-                            title: 'AI Assistants',
-                            headerShown: false,
+                            title: 'Auto Functions',
+                            headerShown: true,
                         }}
                     />
                     <Tabs.Screen
