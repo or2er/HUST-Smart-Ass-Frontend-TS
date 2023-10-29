@@ -20,12 +20,17 @@ export default function AFTaskCard({item, key_c}) {
     const hideDialog = () => setVisible(false);
     const types_dict = {
         yt: 'Youtube',
-        pdf: 'PDF'
+        pdf: 'PDF',
+        topic: 'Topic'
     }
 
-    const handleStartInteract = (id) => {
+    const handleStartInteract = (id, type) => {
         console.log(id)
-        router.push({ pathname: '/chat', params: { id: id } });
+        if (type == 'topic') {
+            router.push({ pathname: '/saved', params: { id: id } });
+        } else {
+            router.push({ pathname: '/chat', params: { id: id } });
+        }
         setVisible(false);
     }
 
@@ -122,7 +127,7 @@ export default function AFTaskCard({item, key_c}) {
                             </Text>
                         </View>
                         {item.processing_status == 1 && (
-                            <Button mode="contained" buttonColor='rgba(239, 30, 59, 0.8)' onPress={() => handleStartInteract(item.id)} style={{
+                            <Button mode="contained" buttonColor='rgba(239, 30, 59, 0.8)' onPress={() => handleStartInteract(item.id, item.type)} style={{
                                 alignItems: 'center',
                                 justifyContent: 'center',
                                 marginTop: 16

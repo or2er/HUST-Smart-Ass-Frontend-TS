@@ -24,7 +24,8 @@ export default function Messages() {
     const hideDialog = () => setVisible(false);
     const types_dict = {
         yt: 'Youtube',
-        pdf: 'PDF'
+        pdf: 'PDF',
+        topic: 'Topic'
     }
 
     useEffect(() => {
@@ -38,25 +39,27 @@ export default function Messages() {
             redirect: 'follow'
         };
 
-        fetch("http://192.168.6.50:8000/doc/read", requestOptions)
-            .then(response => response.json())
-            .then(result => {
-                console.log('doc/read:', result);
-                setData(result['data'])
-                // result['data'].forEach(element => {
+        setInterval(() => {
+            fetch(`http://${BACKEND_URL}/doc/read`, requestOptions)
+                .then(response => response.json())
+                .then(result => {
+                    console.log('doc/read:', result);
+                    setData(result['data'])
+                    // result['data'].forEach(element => {
 
-                //     socket.emit('post-prog', element.id);
-                //     socket.on('get-prog', (id, completion_rate) => {
-                //         element['completion_rate'] = completion_rate
-                //         // console.log(element)
-                //         // tmp.push(element)
-                //         setData([...data, element])
-                //     })
-                // });
-                // console.log(tmp)
+                    //     socket.emit('post-prog', element.id);
+                    //     socket.on('get-prog', (id, completion_rate) => {
+                    //         element['completion_rate'] = completion_rate
+                    //         // console.log(element)
+                    //         // tmp.push(element)
+                    //         setData([...data, element])
+                    //     })
+                    // });
+                    // console.log(tmp)
 
-            })
-            .catch(error => console.log('error', error));
+                })
+                .catch(error => console.log('error', error));
+        }, 5000);
     }, [])
 
 
@@ -97,7 +100,9 @@ export default function Messages() {
             </View>
 
             {/* Body */}
-            <View>
+            <View style={{
+                marginBottom:72
+            }} >
                 <ScrollView>
                     {data && data.map((item, key) => {
                         return (
