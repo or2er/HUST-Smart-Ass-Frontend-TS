@@ -9,17 +9,18 @@ import { Text, useTheme } from 'react-native-paper';
 
 import Colors from '@/constants/Colors';
 
-export default function ImageRecCard({title, img, onClick}) {
+export default function ImageRecCard({ title, img, onClick }) {
     // const theme = useTheme();
     // const colorScheme = useColorScheme();
 
     return (
         <View style={{
-            marginRight:16
+            marginRight: 16,
+            marginLeft: 2,
         }} >
             <Pressable onPress={onClick} >
                 <View style={styles.imageWrapper} >
-                    <ImageBackground source={ img ? img : require('@/assets/images/vegetable.jpg')} style={styles.theImage}>
+                    <ImageBackground source={img ? img : require('@/assets/images/vegetable.jpg')} style={styles.theImage}>
                         <View style={styles.centerText}>
                             <Text variant='bodyLarge' style={{
                                 color: '#fff',
