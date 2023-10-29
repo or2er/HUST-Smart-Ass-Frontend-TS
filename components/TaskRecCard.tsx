@@ -1,11 +1,11 @@
 import { StyleSheet, Image, useColorScheme } from 'react-native';
 import IonIcon from '@expo/vector-icons/Ionicons';
 import { View } from '@/components/Themed';
-import { Text, Card, useTheme,  } from 'react-native-paper';
+import { Text, Card, useTheme, } from 'react-native-paper';
 
 import Colors from '@/constants/Colors';
 
-export default function TaskRecCard({type}) {
+export default function TaskRecCard({ type }) {
     const colorScheme = useColorScheme();
     const theme = useTheme();
     const color_card = {
@@ -18,7 +18,7 @@ export default function TaskRecCard({type}) {
             <Card.Content style={styles.content} >
                 <View style={styles.text}>
                     <View style={{ backgroundColor: color_card[type] }} >
-                        <Text variant="titleLarge" style={{ 
+                        <Text variant="titleLarge" style={{
                             fontWeight: 'bold',
                             color: Colors[colorScheme ?? 'light'].text
                         }}>Workout</Text>
@@ -70,7 +70,8 @@ const styles = StyleSheet.create({
         backgroundColor: '#F0F0FF',
         width: 290,
         height: 175,
-        marginRight:16
+        marginRight: 13,
+        marginLeft: 3
     },
     content: {
         flexDirection: 'row',

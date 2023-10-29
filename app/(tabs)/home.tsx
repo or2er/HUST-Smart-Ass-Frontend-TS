@@ -125,9 +125,9 @@ export default function HomeScreen() {
                                 onClick={() => router.push('/diet_recs')} 
                                 key={1}
                             />
-                            <ImageRecCard  
-                                title={'GYM WORKOUT'} 
-                                img={require('@/assets/images/gym.jpg')} 
+                            <ImageRecCard
+                                title={'GYM WORKOUT'}
+                                img={require('@/assets/images/gym.jpg')}
                                 key={2}
                                 onClick={() => router.push('/exercise_recs')}
                             />

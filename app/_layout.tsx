@@ -16,7 +16,7 @@ export {
 } from 'expo-router';
 
 export const unstable_settings = {
-    // Ensure that reloading on `/modal` keeps a back button present.
+    // Ensure that reloading on /modal keeps a back button present.
     initialRouteName: '(tabs)',
 };
 
@@ -190,7 +190,7 @@ function RootLayoutNav() {
                         name="exercise_recs"
                         options={{
                             // headerShown: false
-                            title:'Exercises'
+                            title: 'Exercises'
                         }}
                     />
                     <Stack.Screen
@@ -205,8 +205,15 @@ function RootLayoutNav() {
                             headerShown: false
                         }}
                     />
+                    <Stack.Screen
+                        name="createNote"
+                        options={{
+                            headerShown: false
+                        }}
+                    />
                 </Stack>
                 {/* </ThemeProvider> */}
+
             </SafeAreaProvider>
         </PaperProvider>
     );
