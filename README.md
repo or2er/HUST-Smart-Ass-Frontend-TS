@@ -75,6 +75,7 @@ This software uses the following open source packages:
 - [React Native](https://reactnative.dev/)
 - [Node.js](https://nodejs.org/)
 - [React Native Paper](https://reactnativepaper.com/)
+- [Redis](https://github.com/redis/redis)
 
 <!-- ## Support
 
